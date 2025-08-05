@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+
+  .purple-dark {
+    --background: 270 50% 5.9%;
+    --foreground: 0 0% 98%;
+    --card: 270 50% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 270 50% 5.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 270 95% 75%;
+    --primary-foreground: 270 50% 5.9%;
+    --secondary: 270 30% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 270 30% 15.9%;
+    --muted-foreground: 270 5% 64.9%;
+    --accent: 270 30% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 30% 25.9%;
+    --input: 270 30% 25.9%;
+    --ring: 270 95% 75%;
+  }
+
+  .blue-dark {
+    --background: 210 50% 5.9%;
+    --foreground: 0 0% 98%;
+    --card: 210 50% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 210 50% 5.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 210 95% 75%;
+    --primary-foreground: 210 50% 5.9%;
+    --secondary: 210 30% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 210 30% 15.9%;
+    --muted-foreground: 210 5% 64.9%;
+    --accent: 210 30% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 30% 25.9%;
+    --input: 210 30% 25.9%;
+    --ring: 210 95% 75%;
+  }
+
+  .red-dark {
+    --background: 0 50% 5.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 50% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 50% 5.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 95% 75%;
+    --primary-foreground: 0 50% 5.9%;
+    --secondary: 0 30% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 30% 15.9%;
+    --muted-foreground: 0 5% 64.9%;
+    --accent: 0 30% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 30% 25.9%;
+    --input: 0 30% 25.9%;
+    --ring: 0 95% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Improved focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+}
+
+/* Optimized scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom cursor - only on devices that support hover */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    cursor: none !important;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  .cursor-interact {
+    cursor: none !important;
+  }
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations */
+.cursor-interact {
+  will-change: transform;
+  transition: transform 200ms ease-out;
+}
+
+.cursor-interact:hover {
+  transform: translateY(-2px);
+}
+
+/* Improved mobile styles */
+@media (max-width: 768px) {
+  .container {
+    @apply px-4;
+  }
+
+  body {
+    padding-bottom: 5rem; /* Space for bottom navigation */
+  }
+
+  /* Ensure touch targets are at least 44px */
+  button,
+  a,
+  input,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 0 0% 20%;
+    --ring: 240 5% 15%;
+  }
+
+  .dark {
+    --border: 0 0% 80%;
+    --ring: 240 5% 85%;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-interact {
+    transition: none;
+  }
+
+  .cursor-interact:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

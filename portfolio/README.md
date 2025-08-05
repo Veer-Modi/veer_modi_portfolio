@@ -1,12 +1,30 @@
-# React + Vite
+# Portfolio website design
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Automatically synced with your [v0.dev](https://v0.dev) deployments*
 
-Currently, two official plugins are available:
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/veer-modis-projects/v0-portfolio-website-design)
+[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/AA65eUqlwjr)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
+Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deployment
+
+Your project is live at:
+
+**[https://vercel.com/veer-modis-projects/v0-portfolio-website-design](https://vercel.com/veer-modis-projects/v0-portfolio-website-design)**
+
+## Build your app
+
+Continue building your app on:
+
+**[https://v0.dev/chat/projects/AA65eUqlwjr](https://v0.dev/chat/projects/AA65eUqlwjr)**
+
+## How It Works
+
+1. Create and modify your project using [v0.dev](https://v0.dev)
+2. Deploy your chats from the v0 interface
+3. Changes are automatically pushed to this repository
+4. Vercel deploys the latest version from this repository
