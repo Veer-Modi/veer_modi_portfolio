@@ -86,7 +86,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <motion.a
-            href="#"
+            href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
             className="flex items-center gap-1 px-2 py-1 bg-primary text-primary-foreground rounded-md text-xs font-medium whitespace-nowrap"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

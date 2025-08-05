@@ -69,7 +69,7 @@ export default function Hero() {
           </motion.a>
 
           <motion.a
-            href="#"
+            href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
             className="bg-background hover:bg-accent border border-border px-6 py-3 rounded-md font-medium text-center flex items-center justify-center gap-2 cursor-interact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

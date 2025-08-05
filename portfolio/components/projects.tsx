@@ -18,16 +18,16 @@ const categories = [
 
 const projectsData = [
   {
-    title: "E-Commerce Platform",
+    title: "VerMio PLay",
     description:
-      "A full-stack e-commerce platform with user authentication, product management, and payment processing.",
+      "A MERN-stack cloud gaming website.",
     longDescription:
       "A comprehensive e-commerce solution built with the MERN stack. This platform features user authentication, product management, shopping cart functionality, and secure payment processing with Stripe integration. The admin dashboard allows for easy product and order management.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/vermio-play.png?height=600&width=800",
     video: null,
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    github: "#",
-    demo: "#",
+    tags: ["React", "Node.js", "MongoDB", "Express"],
+    github: "https://github.com/codinggita/vermio_play",
+    demo: "https://vermio-play-1.onrender.com/",
     categories: ["full-stack", "mern"],
     features: [
       "User authentication and profile management",

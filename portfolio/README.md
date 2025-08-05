@@ -1,30 +1,48 @@
-# Portfolio website design
+    # Veer Modi Portfolio
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+This repository houses the code for my personal portfolio website built with **Next.js** and hosted on **Vercel**.  
+Visit the live site at: https://veer-modi-portfolio.vercel.app/
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/veer-modis-projects/v0-portfolio-website-design)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/AA65eUqlwjr)
+---
 
-## Overview
+## 🚀 About Me
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+Hi! I'm **Veer Modi**, a Computer Science Engineer passionate about web development and building interactive experiences.  
+This portfolio highlights my projects, skills, background, and a way to connect with me.
 
-## Deployment
+---
 
-Your project is live at:
+## 💼 Portfolio Overview
 
-**[https://vercel.com/veer-modis-projects/v0-portfolio-website-design](https://vercel.com/veer-modis-projects/v0-portfolio-website-design)**
+The site includes the following sections:
 
-## Build your app
+- **Home / Hero** – A dynamic intro, animated typewriter roles, and quick navigation to key sections
+- **About Me** – My story, passion, and technical journey
+- **Skills** – Core technologies and tools I’m proficient in
+- **Projects** – My featured work and side projects with descriptions and links
+- **Experience / Education** – A timeline of my academic & professional milestones (if included)
+- **Certifications / Badges** – Relevant achievements and credentials
+- **Contact** – A contact form or direct links to social profiles
 
-Continue building your app on:
+---
 
-**[https://v0.dev/chat/projects/AA65eUqlwjr](https://v0.dev/chat/projects/AA65eUqlwjr)**
+## 🛠️ Built With
 
-## How It Works
+- **Next.js** – Frontend + Server‑Side Rendering / Static Generation
+- **React** / **TypeScript** (if used) – Component-based architecture and type safety
+- **Tailwind CSS** or other styling framework (if applicable)
+- **Framer Motion** – Animations and interactive UI effects
+- Hosted seamlessly on **Vercel**
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+---
+
+## 🧩 Getting Started
+
+Steps to run locally:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+npm install
+npm run dev
+```

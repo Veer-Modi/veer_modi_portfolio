@@ -90,7 +90,7 @@ export default function Contact() {
                   <h4 className="text-lg font-medium mb-4">Connect with me</h4>
                   <div className="flex gap-4">
                     <motion.a
-                      href="#"
+                      href="https://github.com/Veer-Modi"
                       className="p-3 bg-background hover:bg-accent rounded-full cursor-interact"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
@@ -98,7 +98,7 @@ export default function Contact() {
                       <Github className="h-5 w-5" />
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://linkedin.com/in/veer-modi/"
                       className="p-3 bg-background hover:bg-accent rounded-full cursor-interact"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
@@ -106,7 +106,7 @@ export default function Contact() {
                       <Linkedin className="h-5 w-5" />
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://x.com/VeerModi2805"
                       className="p-3 bg-background hover:bg-accent rounded-full cursor-interact"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
