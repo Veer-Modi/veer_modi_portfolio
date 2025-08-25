@@ -1,4 +1,4 @@
-    # Veer Modi Portfolio
+# Veer Modi Portfolio
 
 This repository houses the code for my personal portfolio website built with **Next.js** and hosted on **Vercel**.  
 Visit the live site at: https://veer-modi-portfolio.vercel.app/

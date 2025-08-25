@@ -88,7 +88,7 @@ export default function   About() {
             transition={{ duration: 0.6 }}
           >
             <div className="aspect-square relative rounded-xl overflow-hidden mb-6">
-              <img src="https://media.licdn.com/dms/image/v2/D4E03AQE7B-KFD_Fneg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1723474514441?e=1755734400&v=beta&t=EXpJzrKdaMlAPiz2YwV2yc06raNbUlRIFxT3AJGaeng" alt="Profile" className="object-cover w-full h-full" />
+              <img src="\IMG_20250322_225519.jpg" alt="Profile" className="object-cover w-full h-full" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex items-end p-6">
                 <h3 className="text-2xl font-bold text-white">Veer Modi</h3>
               </div>

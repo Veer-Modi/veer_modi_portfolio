@@ -47,9 +47,7 @@ const skillCategories = [
     title: "Cloud",
     icon: <Cloud className="h-6 w-6" />,
     skills: [
-      { name: "AWS", level: 75 },
       { name: "Vercel", level: 90 },
-      { name: "Firebase", level: 80 },
       { name: "Netlify", level: 85 },
       { name: "Render", level: 60 },
     ],
