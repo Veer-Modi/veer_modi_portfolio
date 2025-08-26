@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils"
 import { Download, User, Code, Briefcase, GraduationCap, Mail, Menu, X } from "lucide-react"
 
 const navItems = [
-  { name: "About", href: "#about", icon: <User className="h-5 w-5" /> },
-  { name: "Skills", href: "#skills", icon: <Code className="h-5 w-5" /> },
-  { name: "Projects", href: "#projects", icon: <Briefcase className="h-5 w-5" /> },
-  { name: "Education", href: "#education", icon: <GraduationCap className="h-5 w-5" /> },
-  { name: "Contact", href: "#contact", icon: <Mail className="h-5 w-5" /> },
+  { name: "About", href: "#about", icon: <User className="h-5 w-5 m-auto" /> },
+  { name: "Skills", href: "#skills", icon: <Code className="h-5 w-5 m-auto" /> },
+  { name: "Projects", href: "#projects", icon: <Briefcase className="h-5 w-5 m-auto" /> },
+  { name: "Education", href: "#education", icon: <GraduationCap className="h-5 w-5 m-auto" /> },
+  { name: "Contact", href: "#contact", icon: <Mail className="h-5 w-5 m-auto" /> },
 ]
 
 export default function Navbar() {
@@ -113,10 +113,10 @@ export default function Navbar() {
             <a
               key={item.name}
               href={item.href}
-              className={cn("mobile-navbar-item", activeSection === item.href.substring(1) ? "active" : "")}
+              className={cn("mobile-navbar-item", activeSection === item.href.substring(1) ? "active " : "")}
             >
               {item.icon}
-              <span className="mt-1 text-xs">{item.name}</span>
+              <span className="ml-auto text-xs">{item.name}</span>
             </a>
           ))}
         </div>
@@ -157,7 +157,7 @@ export default function Navbar() {
               ))}
 
               <motion.a
-                href="#"
+                href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
                 className="mt-4 flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-md text-lg font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

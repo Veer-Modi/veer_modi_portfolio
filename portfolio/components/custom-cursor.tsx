@@ -32,11 +32,11 @@ export default function CustomCursor() {
         const isClickable =
           target.tagName.toLowerCase() === "a" ||
           target.tagName.toLowerCase() === "button" ||
-          target.closest("a") ||
-          target.closest("button") ||
+          !!target.closest("a") ||   // `!!` ensures this becomes boolean
+          !!target.closest("button") ||
           target.classList.contains("cursor-interact")
 
-        setIsPointer(isClickable)
+        setIsPointer(isClickable) // ✅ always boolean now
       }
 
       window.addEventListener("mouseover", handleMouseOver)

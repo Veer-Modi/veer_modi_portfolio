@@ -6,7 +6,7 @@ import { createContext, useContext, useState, useEffect, useRef } from "react"
 
 type NavbarContextType = {
   isScrolled: boolean
-  navbarRef: React.RefObject<HTMLDivElement>
+  navbarRef: React.RefObject<HTMLDivElement | null>
   isDragging: boolean
   setIsDragging: (value: boolean) => void
   position: { x: number; y: number }
