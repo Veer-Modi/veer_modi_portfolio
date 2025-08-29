@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Github, ExternalLink, Play, Pause, Eye } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
-import { ProjectModal } from "@/components/project-modal"
+import ProjectModal from "@/components/project-modal"
 
 const categories = [
   { id: "all", name: "All Projects" },
@@ -305,7 +305,9 @@ export default function Projects() {
                   {project.video ? (
                     <>
                       <video
-                        ref={(el) => (videoRefs.current[index] = el)}
+                        ref={(el) => {
+                          videoRefs.current[index] = el
+                        }}
                         src={project.video}
                         poster={project.image}
                         className="w-full h-full object-cover"

@@ -9,7 +9,7 @@ import ContentContainer from "@/components/content-container"
 
 export default function Home() {
   return (
-    <main className="relative min-h-dvh overflow-hidden">
+    <main className="relative min-h-dvh overflow-hidden hide-scrollbar">
       <AnimatedBackground />
       <div className="relative z-10">
         <Hero />
