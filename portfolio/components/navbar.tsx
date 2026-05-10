@@ -32,7 +32,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
-      setIsScrolled(scrollPosition > 50)
+      setIsScrolled(scrollPosition > window.innerHeight / 2)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -76,7 +76,7 @@ export default function Navbar() {
       {/* Desktop Navbar */}
       <motion.nav
         className={cn(
-          "hidden md:flex fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "hidden md:flex fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out",
           isScrolled
             ? "py-4 bg-transparent"
             : "py-6 bg-transparent"
@@ -85,7 +85,14 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
+        <div 
+          className={cn(
+            "flex items-center mx-auto transition-all duration-700 ease-in-out",
+            isScrolled 
+              ? "w-fit gap-4 justify-center px-4" 
+              : "container px-6 w-full justify-between"
+          )}
+        >
           <motion.a
             href="#"
             className="font-bold text-2xl tracking-tighter drop-shadow-sm bg-background/30 backdrop-blur-xl px-5 py-1 rounded-full border border-border/20 shadow-sm"
