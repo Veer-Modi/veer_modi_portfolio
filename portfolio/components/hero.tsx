@@ -7,7 +7,7 @@ import { Download } from "lucide-react"
 
 export default function Hero() {
   const [text] = useTypewriter({
-    words: ["Frontend Developer", "React Specialist", "UI/UX Enthusiast"],
+    words: ["Full Stack Developer", "Backend Developer", "Frontend Developer", "React Specialist", "System Architect"],
     loop: true,
     delaySpeed: 2000,
   })
@@ -49,8 +49,8 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          I create beautiful, responsive, and user-friendly web applications with a focus on React, Tailwind CSS, and
-          modern frontend technologies.
+          I create scalable, responsive, and robust web applications with a focus on React, Node.js, and
+          modern full stack technologies.
         </motion.p>
 
         <motion.div
