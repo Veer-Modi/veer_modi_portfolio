@@ -4,13 +4,15 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Download, ExternalLink, X, FileText } from "lucide-react"
 
-export default function ResumeModal({ children }: { children: React.ReactNode }) {
+import { cn } from "@/lib/utils"
+
+export default function ResumeModal({ children, className }: { children: React.ReactNode, className?: string }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
       {/* Trigger Wrapper */}
-      <div onClick={() => setIsOpen(true)} className="inline-block">
+      <div onClick={() => setIsOpen(true)} className={cn("inline-block", className)}>
         {children}
       </div>
 

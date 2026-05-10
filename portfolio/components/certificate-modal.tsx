@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogClose, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, X } from "lucide-react";
 
@@ -30,6 +30,7 @@ export default function CertificateModal({ isOpen, onClose, certificate }: Certi
         {/* Sticky Header */}
         <div className="sticky top-0 z-50 flex items-center justify-between bg-background/80 backdrop-blur-xl border-b border-white/10 px-4 sm:px-6 py-4">
           <DialogTitle className="text-xl sm:text-2xl font-bold pr-4">{certificate.title}</DialogTitle>
+          <DialogDescription className="sr-only">Details for {certificate.title} certificate</DialogDescription>
           <DialogClose className="p-2 hover:bg-white/10 rounded-full transition-colors focus:outline-none shrink-0">
             <X className="h-5 w-5 opacity-70 hover:opacity-100" />
             <span className="sr-only">Close</span>

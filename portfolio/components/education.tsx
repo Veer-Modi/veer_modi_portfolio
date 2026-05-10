@@ -169,9 +169,9 @@ export default function Certifications() {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <div className="flex justify-between items-start">
-                          <h3 className="font-bold text-lg truncate pr-2">{item.title}</h3>
-                          <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap shrink-0">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
+                          <h3 className="font-bold text-lg sm:truncate pr-2">{item.title}</h3>
+                          <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap shrink-0 mt-1 sm:mt-0">
                             <Calendar className="h-3 w-3 mr-1" />
                             {item.period}
                           </div>

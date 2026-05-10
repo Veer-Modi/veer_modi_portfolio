@@ -12,7 +12,7 @@ const navItems = [
   { name: "About", href: "#about", icon: <User className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
   { name: "Skills", href: "#skills", icon: <Code className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
   { name: "Projects", href: "#projects", icon: <Briefcase className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
-  { name: "Education", href: "#education", icon: <GraduationCap className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
+  { name: "Certifications", href: "#certifications", icon: <GraduationCap className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
   { name: "Contact", href: "#contact", icon: <Mail className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
 ]
 
@@ -164,13 +164,13 @@ export default function Navbar() {
         <div className="flex justify-around items-center">
           {navItems.map((item) => (
             <a
-               key={item.name}
-               href={item.href}
-               className={cn("flex flex-col items-center p-2 rounded-lg transition-colors", activeSection === item.href.substring(1) ? "text-primary" : "text-muted-foreground")}
-             >
-               {item.icon}
-               <span className="text-[10px] mt-1 font-medium">{item.name}</span>
-             </a>
+              key={item.name}
+              href={item.href}
+              className={cn("flex flex-col items-center p-2 rounded-lg transition-colors", activeSection === item.href.substring(1) ? "text-primary" : "text-muted-foreground")}
+            >
+              {item.icon}
+              <span className="text-[10px] mt-1 font-medium">{item.name}</span>
+            </a>
           ))}
         </div>
       </div>
@@ -209,9 +209,9 @@ export default function Navbar() {
                 </motion.a>
               ))}
 
-              <ResumeModal>
+              <ResumeModal className="w-full mt-4">
                 <motion.button
-                  className="w-full mt-4 flex items-center justify-center gap-2 py-4 bg-primary text-primary-foreground rounded-xl text-lg font-medium shadow-md"
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-primary text-primary-foreground rounded-xl text-lg font-medium shadow-md"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setShowMobileMenu(false)}

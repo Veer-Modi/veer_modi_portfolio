@@ -11,12 +11,15 @@ export default function CustomCursor() {
   const cursorY = useMotionValue(-100)
   const { theme } = useTheme()
 
+  const [mounted, setMounted] = useState(false)
+
   // Spring animations for smoother cursor movement
   const springConfig = { damping: 25, stiffness: 300 }
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
 
   useEffect(() => {
+    setMounted(true)
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
@@ -57,8 +60,8 @@ export default function CustomCursor() {
     }
   }, [cursorX, cursorY])
 
-  // Don't render on mobile devices
-  if (typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches) {
+  // Don't render on mobile devices or server
+  if (!mounted || (typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches)) {
     return null
   }
 
