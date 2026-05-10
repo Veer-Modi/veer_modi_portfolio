@@ -43,15 +43,19 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => item.href.substring(1))
-      const scrollPosition = window.scrollY + 100
+      // Use middle of viewport for more accurate detection, or a top offset
+      const scrollPosition = window.scrollY + window.innerHeight / 3
 
-      for (const section of sections) {
+      // Reverse array to check from bottom to top (helps with the last section)
+      const reversedSections = [...sections].reverse()
+      
+      for (const section of reversedSections) {
         const element = document.getElementById(section)
         if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          const rect = element.getBoundingClientRect()
+          const offsetTop = rect.top + window.scrollY
+          
+          if (scrollPosition >= offsetTop) {
             setActiveSection(section)
             break
           }
@@ -60,6 +64,8 @@ export default function Navbar() {
     }
 
     window.addEventListener("scroll", handleScroll)
+    // Run once on mount
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
