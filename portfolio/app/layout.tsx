@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { NavbarProvider } from "@/components/navbar-provider"
 import Navbar from "@/components/navbar"
 import CustomCursor from "@/components/custom-cursor"
+import InitialLoader from "@/components/initial-loader"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
@@ -34,11 +35,13 @@ export default function RootLayout({
           forcedTheme="blue-dark"
           themes={["purple-dark", "blue-dark", "red-dark"]}
         >
-          <NavbarProvider>
-            <Navbar />
-            <CustomCursor />
-            {children}
-          </NavbarProvider>
+          <InitialLoader>
+            <NavbarProvider>
+              <Navbar />
+              <CustomCursor />
+              {children}
+            </NavbarProvider>
+          </InitialLoader>
         </ThemeProvider>
       </body>
     </html>
