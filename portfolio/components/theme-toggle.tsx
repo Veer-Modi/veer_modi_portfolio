@@ -6,7 +6,7 @@ import { Palette, Check } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-export function ThemeToggle() {
+export function ThemeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [showThemeSelector, setShowThemeSelector] = useState(false)
@@ -37,7 +37,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <div className="relative">
+    <div className={cn("relative", className)}>
       <div className="flex items-center">
         <motion.button
           onClick={() => setShowThemeSelector(!showThemeSelector)}
