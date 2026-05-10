@@ -85,15 +85,19 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div 
+        <motion.div 
+          layout
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} // smooth, soft spring-like easing
           className={cn(
-            "flex items-center mx-auto transition-all duration-700 ease-in-out",
+            "flex items-center mx-auto",
             isScrolled 
               ? "w-fit gap-4 justify-center px-4" 
               : "container px-6 w-full justify-between"
           )}
         >
           <motion.a
+            layout
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             href="#"
             className="font-bold text-2xl tracking-tighter drop-shadow-sm bg-background/30 backdrop-blur-xl px-5 py-1 rounded-full border border-border/20 shadow-sm"
             whileHover={{ scale: 1.05 }}
@@ -102,7 +106,11 @@ export default function Navbar() {
             Veer Modi
           </motion.a>
 
-          <div className="flex items-center gap-6">
+          <motion.div 
+            layout
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-6"
+          >
             <div className="flex items-center gap-1 bg-background/30 backdrop-blur-xl px-2 py-1 rounded-full border border-border/20 shadow-sm">
               {navItems.map((item) => (
                 <a
@@ -134,8 +142,8 @@ export default function Navbar() {
                 </motion.button>
               </ResumeModal>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </motion.nav>
 
       {/* Mobile Top Navbar - Visible only on mobile */}
