@@ -6,6 +6,7 @@ import { useTheme } from "next-themes"
 import { ThemeToggle } from "./theme-toggle"
 import { cn } from "@/lib/utils"
 import { Download, User, Code, Briefcase, GraduationCap, Mail, Menu, X } from "lucide-react"
+import ResumeModal from "@/components/resume-modal"
 
 const navItems = [
   { name: "About", href: "#about", icon: <User className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
@@ -109,15 +110,16 @@ export default function Navbar() {
 
             <div className="flex items-center gap-3">
               <ThemeToggle />
-              <motion.a
-                href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
-                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-shadow"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Download className="h-4 w-4" />
-                <span>Resume</span>
-              </motion.a>
+              <ResumeModal>
+                <motion.button
+                  className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-shadow"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Download className="h-4 w-4" />
+                  <span>Resume</span>
+                </motion.button>
+              </ResumeModal>
             </div>
           </div>
         </div>
@@ -135,15 +137,16 @@ export default function Navbar() {
         </motion.a>
 
         <div className="flex items-center gap-2">
-          <motion.a
-            href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
-            className="flex items-center gap-1 px-2 py-1.5 bg-primary text-primary-foreground rounded-md text-xs font-medium whitespace-nowrap shadow-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Download className="h-3 w-3" />
-            <span>Resume</span>
-          </motion.a>
+          <ResumeModal>
+            <motion.button
+              className="flex items-center gap-1 px-2 py-1.5 bg-primary text-primary-foreground rounded-md text-xs font-medium whitespace-nowrap shadow-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Download className="h-3 w-3" />
+              <span>Resume</span>
+            </motion.button>
+          </ResumeModal>
 
           <ThemeToggle />
 
@@ -206,16 +209,17 @@ export default function Navbar() {
                 </motion.a>
               ))}
 
-              <motion.a
-                href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
-                className="w-full mt-4 flex items-center justify-center gap-2 py-4 bg-primary text-primary-foreground rounded-xl text-lg font-medium shadow-md"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => setShowMobileMenu(false)}
-              >
-                <Download className="h-5 w-5" />
-                <span>Download Resume</span>
-              </motion.a>
+              <ResumeModal>
+                <motion.button
+                  className="w-full mt-4 flex items-center justify-center gap-2 py-4 bg-primary text-primary-foreground rounded-xl text-lg font-medium shadow-md"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setShowMobileMenu(false)}
+                >
+                  <Download className="h-5 w-5" />
+                  <span>Resume</span>
+                </motion.button>
+              </ResumeModal>
             </div>
           </motion.div>
         )}

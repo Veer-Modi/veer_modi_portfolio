@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useTypewriter, Cursor } from "react-simple-typewriter"
 import { ThemeToggle } from "./theme-toggle"
 import { Download } from "lucide-react"
+import ResumeModal from "@/components/resume-modal"
 
 export default function Hero() {
   const [text] = useTypewriter({
@@ -68,15 +69,16 @@ export default function Hero() {
             View My Work
           </motion.a>
 
-          <motion.a
-            href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
-            className="bg-background hover:bg-accent border border-border px-6 py-3 rounded-md font-medium text-center flex items-center justify-center gap-2 cursor-interact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Download className="h-4 w-4" />
-            Download Resume
-          </motion.a>
+          <ResumeModal>
+            <motion.button
+              className="bg-background hover:bg-accent border border-border px-6 py-3 rounded-md font-medium text-center flex items-center justify-center gap-2 cursor-interact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Download className="h-4 w-4" />
+              Resume
+            </motion.button>
+          </ResumeModal>
         </motion.div>
 
         <div className="absolute top-4 right-4">
