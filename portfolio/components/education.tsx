@@ -262,7 +262,7 @@ export default function Education() {
             <InViewMotion key={index} delay={index * 0.1}>
               <motion.div
                 className={cn(
-                  "backdrop-blur-xl bg-background/20 rounded-xl border transition-all duration-300 cursor-interact overflow-hidden",
+                  "backdrop-blur-xl bg-background/40 rounded-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] transition-all duration-300 cursor-interact overflow-hidden",
                   activeItem === index
                     ? "border-primary shadow-lg scale-[1.02]"
                     : "border-border/50 hover:border-primary/50",

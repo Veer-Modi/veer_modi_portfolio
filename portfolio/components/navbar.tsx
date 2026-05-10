@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils"
 import { Download, User, Code, Briefcase, GraduationCap, Mail, Menu, X } from "lucide-react"
 
 const navItems = [
-  { name: "About", href: "#about", icon: <User className="h-5 w-5 m-auto" /> },
-  { name: "Skills", href: "#skills", icon: <Code className="h-5 w-5 m-auto" /> },
-  { name: "Projects", href: "#projects", icon: <Briefcase className="h-5 w-5 m-auto" /> },
-  { name: "Education", href: "#education", icon: <GraduationCap className="h-5 w-5 m-auto" /> },
-  { name: "Contact", href: "#contact", icon: <Mail className="h-5 w-5 m-auto" /> },
+  { name: "About", href: "#about", icon: <User className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
+  { name: "Skills", href: "#skills", icon: <Code className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
+  { name: "Projects", href: "#projects", icon: <Briefcase className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
+  { name: "Education", href: "#education", icon: <GraduationCap className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
+  { name: "Contact", href: "#contact", icon: <Mail className="h-5 w-5 md:mr-2 md:h-4 md:w-4" /> },
 ]
 
 export default function Navbar() {
@@ -31,7 +31,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
-      setIsScrolled(scrollPosition > 100)
+      setIsScrolled(scrollPosition > 50)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -64,17 +64,67 @@ export default function Navbar() {
 
   if (!mounted) return null
 
-  const getNavbarShadow = () => {
-    if (theme?.includes("dark")) {
-      return "shadow-white/10"
-    }
-    return "shadow-black/10"
-  }
-
   return (
     <>
-      {/* Mobile Top Navbar - Always visible on mobile */}
-      <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/20 px-4 py-3 flex justify-between items-center">
+      {/* Desktop Navbar */}
+      <motion.nav
+        className={cn(
+          "hidden md:flex fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          isScrolled
+            ? "py-4 backdrop-blur-2xl bg-background/50 border-b border-border/30 shadow-lg"
+            : "py-6 bg-transparent"
+        )}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          <motion.a
+            href="#"
+            className="font-bold text-2xl tracking-tighter drop-shadow-sm"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Veer Modi
+          </motion.a>
+
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-1 bg-background/30 backdrop-blur-xl px-2 py-1 rounded-full border border-border/20 shadow-sm">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center",
+                    activeSection === item.href.substring(1)
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "hover:bg-accent hover:text-accent-foreground text-foreground/80"
+                  )}
+                >
+                  {item.icon}
+                  {item.name}
+                </a>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <motion.a
+                href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
+                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-shadow"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Download className="h-4 w-4" />
+                <span>Resume</span>
+              </motion.a>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Top Navbar - Visible only on mobile */}
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/60 border-b border-border/30 px-4 py-3 flex justify-between items-center shadow-sm">
         <motion.a
           href="#"
           className="font-bold text-lg text-foreground whitespace-nowrap"
@@ -87,7 +137,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <motion.a
             href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
-            className="flex items-center gap-1 px-2 py-1 bg-primary text-primary-foreground rounded-md text-xs font-medium whitespace-nowrap"
+            className="flex items-center gap-1 px-2 py-1.5 bg-primary text-primary-foreground rounded-md text-xs font-medium whitespace-nowrap shadow-sm"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -99,7 +149,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setShowMobileMenu(!showMobileMenu)}
-            className="p-1.5 rounded-md bg-background/80 border border-border/50"
+            className="p-1.5 rounded-md bg-background/80 border border-border/50 shadow-sm"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -107,17 +157,17 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Bottom Navbar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-t border-border/20 px-4 py-2">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/70 border-t border-border/30 px-4 py-2 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
         <div className="flex justify-around items-center">
           {navItems.map((item) => (
             <a
-              key={item.name}
-              href={item.href}
-              className={cn("mobile-navbar-item", activeSection === item.href.substring(1) ? "active " : "")}
-            >
-              {item.icon}
-              <span className="ml-auto text-xs">{item.name}</span>
-            </a>
+               key={item.name}
+               href={item.href}
+               className={cn("flex flex-col items-center p-2 rounded-lg transition-colors", activeSection === item.href.substring(1) ? "text-primary" : "text-muted-foreground")}
+             >
+               {item.icon}
+               <span className="text-[10px] mt-1 font-medium">{item.name}</span>
+             </a>
           ))}
         </div>
       </div>
@@ -126,30 +176,30 @@ export default function Navbar() {
       <AnimatePresence>
         {showMobileMenu && (
           <motion.div
-            className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-md flex flex-col items-center justify-center"
+            className="md:hidden fixed inset-0 z-[60] bg-background/90 backdrop-blur-3xl flex flex-col items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <button
               onClick={() => setShowMobileMenu(false)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-accent/50"
+              className="absolute top-4 right-4 p-2 rounded-full bg-accent/50 hover:bg-accent transition-colors"
             >
               <X className="h-6 w-6" />
             </button>
 
-            <div className="flex flex-col gap-4 items-center">
+            <div className="flex flex-col gap-4 items-center w-full px-6">
               {navItems.map((item) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "px-8 py-3 rounded-md text-lg font-medium flex items-center gap-3",
-                    activeSection === item.href.substring(1) ? "bg-primary/10 text-primary" : "hover:bg-accent/50",
+                    "w-full py-4 rounded-xl text-lg font-medium flex items-center justify-center gap-3 transition-colors",
+                    activeSection === item.href.substring(1) ? "bg-primary/20 text-primary border border-primary/30" : "bg-accent/40 hover:bg-accent/60 text-foreground"
                   )}
                   onClick={() => setShowMobileMenu(false)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   {item.icon}
                   {item.name}
@@ -158,9 +208,9 @@ export default function Navbar() {
 
               <motion.a
                 href="https://drive.google.com/drive/folders/1JYMAKKFjSP-LP0iPKfDXARFIs3sAuabV"
-                className="mt-4 flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-md text-lg font-medium"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="w-full mt-4 flex items-center justify-center gap-2 py-4 bg-primary text-primary-foreground rounded-xl text-lg font-medium shadow-md"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setShowMobileMenu(false)}
               >
                 <Download className="h-5 w-5" />

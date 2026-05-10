@@ -81,7 +81,7 @@ export default function   About() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <motion.div
-            className="backdrop-blur-md bg-background/30 p-8 rounded-xl border border-border/50 shadow-lg"
+            className="backdrop-blur-xl bg-background/40 p-8 rounded-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] shadow-xl"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -145,7 +145,7 @@ export default function   About() {
               <motion.div
                 key={item.id}
                 className={cn(
-                  "backdrop-blur-md bg-background/30 p-6 rounded-xl border border-border/50 shadow-lg transition-all duration-300",
+                  "backdrop-blur-xl bg-background/40 p-6 rounded-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] shadow-xl transition-all duration-300",
                   hoverElement === item.id ? getThemeAccentColor() : "",
                 )}
                 initial={{ opacity: 0, x: 20 }}

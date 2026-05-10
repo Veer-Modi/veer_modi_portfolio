@@ -96,8 +96,8 @@ export default function Skills() {
   }
 
   return (
-    <section id="skills" className="py-20 px-4 relative">
-      <div className="container mx-auto">
+    <section id="skills" className="py-20 px-6 md:px-8 relative">
+      <div className="container mx-auto max-w-6xl">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -120,10 +120,10 @@ export default function Skills() {
                 <motion.div
                   key={category.title}
                   className={cn(
-                    "backdrop-blur-md bg-background/30 p-5 rounded-xl border transition-all cursor-pointer",
+                    "backdrop-blur-xl bg-background/40 p-5 rounded-2xl border transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]",
                     activeCategory === category.title
-                      ? "border-primary shadow-lg"
-                      : "border-border/50 hover:border-primary/50",
+                      ? "border-primary/70 shadow-lg shadow-primary/20"
+                      : "border-white/10 hover:border-primary/50",
                     getThemeShadowColor(),
                   )}
                   initial={{ opacity: 0, x: -20 }}
@@ -152,7 +152,7 @@ export default function Skills() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
                 className={cn(
-                  "backdrop-blur-md bg-background/30 p-6 rounded-xl border border-primary/50",
+                  "backdrop-blur-xl bg-background/40 p-6 sm:p-8 rounded-3xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]",
                   getThemeShadowColor(),
                 )}
               >
@@ -172,7 +172,7 @@ export default function Skills() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.1 }}
-                        className="bg-background/50 p-4 rounded-lg border border-border/50 hover:border-primary/50 transition-all cursor-interact"
+                        className="bg-background/50 p-4 rounded-xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-primary/50 transition-all cursor-interact"
                         whileHover={{ y: -5, transition: { duration: 0.2 } }}
                       >
                         <div className="flex justify-between mb-3">
