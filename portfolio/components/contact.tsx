@@ -91,7 +91,7 @@ export default function Contact() {
 
         <div className="max-w-4xl mx-auto">
           <motion.div
-            className="backdrop-blur-xl bg-background/40 p-8 rounded-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] shadow-xl"
+            className="backdrop-blur-lg bg-background/40 p-8 rounded-2xl border border-white/20 border-b-white/5 border-r-white/5 shadow-[inset_0_1px_4px_rgba(255,255,255,0.3)] shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -180,7 +180,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your name"
                       required
-                      className="bg-background/50 backdrop-blur-sm border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] cursor-interact"
+                      className="bg-background/50 backdrop-blur-sm border border-white/20 border-b-white/5 border-r-white/5 shadow-[inset_0_1px_3px_rgba(255,255,255,0.3)] cursor-interact"
                     />
                   </div>
 
@@ -196,7 +196,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="your.email@example.com"
                       required
-                      className="bg-background/50 backdrop-blur-sm border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] cursor-interact"
+                      className="bg-background/50 backdrop-blur-sm border border-white/20 border-b-white/5 border-r-white/5 shadow-[inset_0_1px_3px_rgba(255,255,255,0.3)] cursor-interact"
                     />
                   </div>
 
@@ -211,7 +211,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your message"
                       required
-                      className="min-h-[120px] bg-background/50 backdrop-blur-sm border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
+                      className="min-h-[120px] bg-background/50 backdrop-blur-sm border border-white/20 border-b-white/5 border-r-white/5 shadow-[inset_0_1px_3px_rgba(255,255,255,0.3)]"
                     />
                   </div>
 

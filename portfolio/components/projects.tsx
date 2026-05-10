@@ -292,7 +292,7 @@ export default function Projects() {
               <motion.div
                 key={index}
                 className={cn(
-                  "backdrop-blur-xl bg-background/40 rounded-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] overflow-hidden cursor-interact h-full flex flex-col",
+                  "backdrop-blur-lg bg-background/40 rounded-2xl border border-white/20 border-b-white/5 border-r-white/5 shadow-[inset_0_1px_4px_rgba(255,255,255,0.3)] overflow-hidden cursor-interact h-full flex flex-col",
                   getThemeShadowColor(),
                 )}
                 initial={{ opacity: 0, y: 20 }}

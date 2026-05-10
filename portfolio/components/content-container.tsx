@@ -27,7 +27,7 @@ export default function ContentContainer({ children }: { children: React.ReactNo
         className={cn(
           "transition-all duration-700 ease-in-out",
           scrolled
-            ? "container mx-auto px-4 md:px-8 rounded-2xl backdrop-blur-3xl bg-background/40 border border-border/40 shadow-xl"
+            ? "container mx-auto px-4 md:px-8 rounded-2xl backdrop-blur-2xl bg-background/40 border border-white/20 border-b-white/5 border-r-white/5 shadow-[inset_0_1px_4px_rgba(255,255,255,0.3)] shadow-xl"
             : "w-full",
         )}
         initial={false}

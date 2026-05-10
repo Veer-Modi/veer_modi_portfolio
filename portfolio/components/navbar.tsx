@@ -71,7 +71,7 @@ export default function Navbar() {
         className={cn(
           "hidden md:flex fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "py-4 backdrop-blur-2xl bg-background/50 border-b border-border/30 shadow-lg"
+            ? "py-4 backdrop-blur-xl bg-background/50 border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
             : "py-6 bg-transparent"
         )}
         initial={{ y: -100 }}
@@ -124,7 +124,7 @@ export default function Navbar() {
       </motion.nav>
 
       {/* Mobile Top Navbar - Visible only on mobile */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/60 border-b border-border/30 px-4 py-3 flex justify-between items-center shadow-sm">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] px-4 py-3 flex justify-between items-center">
         <motion.a
           href="#"
           className="font-bold text-lg text-foreground whitespace-nowrap"
@@ -157,7 +157,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Bottom Navbar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/70 border-t border-border/30 px-4 py-2 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/70 border-t border-white/20 px-4 py-2 pb-safe shadow-[0_-4px_30px_rgba(0,0,0,0.1)]">
         <div className="flex justify-around items-center">
           {navItems.map((item) => (
             <a
@@ -176,7 +176,7 @@ export default function Navbar() {
       <AnimatePresence>
         {showMobileMenu && (
           <motion.div
-            className="md:hidden fixed inset-0 z-[60] bg-background/90 backdrop-blur-3xl flex flex-col items-center justify-center"
+            className="md:hidden fixed inset-0 z-[60] bg-background/90 backdrop-blur-2xl flex flex-col items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

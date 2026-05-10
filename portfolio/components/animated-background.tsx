@@ -171,7 +171,7 @@ export default function AnimatedBackground() {
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       {/* Overlay to ensure glassmorphism stands out on top of the animation */}
-      <div className="absolute inset-0 bg-background/20 backdrop-blur-[2px]"></div>
+      <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px]"></div>
     </motion.div>
   )
 }

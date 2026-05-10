@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4">
       <motion.div
-        className="backdrop-blur-3xl bg-background/40 p-6 sm:p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] max-w-4xl w-full mx-4 md:mx-auto"
+        className="backdrop-blur-2xl bg-background/40 p-6 sm:p-8 md:p-12 rounded-3xl shadow-2xl border border-white/20 border-b-white/5 border-r-white/5 shadow-[inset_0_1px_4px_rgba(255,255,255,0.3)] max-w-4xl w-full mx-4 md:mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
