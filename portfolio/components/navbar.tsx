@@ -48,13 +48,13 @@ export default function Navbar() {
 
       // Reverse array to check from bottom to top (helps with the last section)
       const reversedSections = [...sections].reverse()
-      
+
       for (const section of reversedSections) {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
           const offsetTop = rect.top + window.scrollY
-          
+
           if (scrollPosition >= offsetTop) {
             setActiveSection(section)
             break
@@ -78,7 +78,7 @@ export default function Navbar() {
         className={cn(
           "hidden md:flex fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "py-4 backdrop-blur-xl bg-background/50 border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+            ? "py-4 bg-transparent"
             : "py-6 bg-transparent"
         )}
         initial={{ y: -100 }}
@@ -88,7 +88,7 @@ export default function Navbar() {
         <div className="container mx-auto px-6 flex justify-between items-center">
           <motion.a
             href="#"
-            className="font-bold text-2xl tracking-tighter drop-shadow-sm"
+            className="font-bold text-2xl tracking-tighter drop-shadow-sm bg-background/30 backdrop-blur-xl px-5 py-1 rounded-full border border-border/20 shadow-sm"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -115,7 +115,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-3">
-              <ThemeToggle />
+              <ThemeToggle className="bg-background/30 backdrop-blur-xl px-2 py-1 rounded-full border border-border/20 shadow-sm"/>
               <ResumeModal>
                 <motion.button
                   className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-shadow"
