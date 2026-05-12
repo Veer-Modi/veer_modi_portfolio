@@ -75,16 +75,16 @@ const projectsData = [
     ],
   },
   {
-    title: "Portfolio Website",
+    title: "Portfolio",
     description: "A modern portfolio website showcasing my skills and projects with interactive animations.",
     longDescription:
       "A modern, responsive portfolio website built with React and Framer Motion. Features include interactive animations, theme switching, and a project showcase. The site is fully responsive and optimized for all devices.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/portfolio.png?height=600&width=800",
     video: null,
     tags: ["React", "Framer Motion", "Tailwind CSS", "Three.js"],
-    github: "#",
-    demo: "#",
-    categories: ["ui-ux", "figma"],
+    github: "https://github.com/Veer-Modi/veer_modi_portfolio",
+    demo: "https://veer-modi.vercel.app/",
+    categories: ["full-stack", "Next.Js"],
     features: [
       "Interactive animations and transitions",
       "Theme switching (light/dark and color themes)",
