@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Github, ExternalLink, Play, Pause, Eye } from "lucide-react"
+import { Github, ExternalLink, Play, Pause, Eye, Figma } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import ProjectModal from "@/components/project-modal"
@@ -12,7 +12,7 @@ const categories = [
   { id: "ui-ux", name: "UI/UX Design" },
   { id: "full-stack", name: "Full Stack" },
   { id: "mern", name: "MERN Stack" },
-  { id: "figma", name: "Figma Clones" },
+  { id: "figma", name: "Figma Designs" },
   { id: "mobile", name: "Mobile Apps" },
 ]
 
@@ -102,30 +102,28 @@ const projectsData = [
     ],
   },
   {
-    title: "Weather Dashboard",
-    description: "A weather dashboard with location-based forecasts, interactive maps, and historical data.",
+    title: "VerMio Play UI Design",
+    description: "A comprehensive Figma design for the VerMio Play cloud gaming platform.",
     longDescription:
-      "A comprehensive weather dashboard that provides location-based forecasts, interactive maps, and historical weather data. The app uses the OpenWeather API for weather data and Mapbox for interactive maps.",
-    image: "/placeholder.svg?height=600&width=800",
+      "A complete UI/UX design for the VerMio Play cloud gaming platform. It features a modern, immersive dark-themed interface with fully interactive prototypes, responsive layouts, and a comprehensive component system tailored for gaming experiences.",
+    image: "/vermio-ui.png?height=600&width=800",
     video: null,
-    tags: ["React", "OpenWeather API", "Chart.js", "Mapbox"],
-    github: "#",
-    demo: "#",
-    categories: ["ui-ux"],
+    tags: ["Figma", "UI/UX", "Prototyping", "Design System"],
+    github: "https://www.figma.com/design/aGv6SfQoVMq0m2eprBvRLI/VerMio-PLay?node-id=0-1&t=tSynM1NZ3nSyvlQd-1",
+    demo: "https://www.figma.com/proto/aGv6SfQoVMq0m2eprBvRLI/VerMio-PLay?node-id=1-2&p=f&t=gNS3Gn91nyM5KPIV-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1",
+    categories: ["ui-ux", "figma"],
     features: [
-      "Location-based weather forecasts",
-      "Interactive weather maps",
-      "Historical weather data visualization",
-      "7-day forecast",
-      "Weather alerts and notifications",
-      "Favorite locations",
+      "Modern, dark-themed UI aesthetics",
+      "Fully interactive high-fidelity prototype",
+      "Comprehensive reusable component library",
+      "Responsive screen layouts",
+      "User flow mapping and structural wireframes",
     ],
     technologies: [
-      { name: "React", description: "Frontend UI library" },
-      { name: "OpenWeather API", description: "Weather data provider" },
-      { name: "Chart.js", description: "Data visualization" },
-      { name: "Mapbox", description: "Interactive maps" },
-      { name: "Axios", description: "HTTP client" },
+      { name: "Figma", description: "UI/UX design and prototyping tool" },
+      { name: "Wireframing", description: "Structural layout planning" },
+      { name: "Prototyping", description: "Interactive flow simulation" },
+      { name: "Design System", description: "Reusable UI components and styles" },
     ],
   },
   {
@@ -368,10 +366,11 @@ export default function Projects() {
                         "flex items-center justify-center p-2 bg-background hover:bg-accent rounded-md text-sm font-medium cursor-interact",
                         getThemeShadowColor(),
                       )}
+                      title={project.categories.includes("figma") ? "Figma Canvas" : "GitHub Repository"}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Github className="h-4 w-4" />
+                      {project.categories.includes("figma") ? <Figma className="h-4 w-4" /> : <Github className="h-4 w-4" />}
                     </motion.a>
 
                     <motion.a
@@ -380,10 +379,11 @@ export default function Projects() {
                         "flex items-center justify-center p-2 bg-background hover:bg-accent rounded-md text-sm font-medium cursor-interact",
                         getThemeShadowColor(),
                       )}
+                      title={project.categories.includes("figma") ? "Figma Prototype" : "Live Demo"}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <ExternalLink className="h-4 w-4" />
+                      {project.categories.includes("figma") ? <Play className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
                     </motion.a>
                   </div>
                 </div>
