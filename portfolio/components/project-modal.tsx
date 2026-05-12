@@ -163,7 +163,7 @@
 import React from "react";
 import { Dialog, DialogContent, DialogTitle, DialogClose, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, ExternalLink, Github, CheckCircle2, MonitorPlay } from "lucide-react";
+import { X, ExternalLink, Github, CheckCircle2, MonitorPlay, Figma, Play } from "lucide-react";
 import Image from "next/image";
 
 interface Technology {
@@ -182,6 +182,7 @@ interface Project {
   longDescription?: string;
   features?: string[];
   technologies?: Technology[];
+  categories?: string[];
 }
 
 interface ProjectModalProps {
@@ -275,16 +276,34 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
           {project.github && (
             <Button asChild variant="outline">
               <a href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="w-4 h-4 mr-2" />
-                Code
+                {project.categories?.includes("figma") ? (
+                  <>
+                    <Figma className="w-4 h-4 mr-2" />
+                    Figma Canvas
+                  </>
+                ) : (
+                  <>
+                    <Github className="w-4 h-4 mr-2" />
+                    Code
+                  </>
+                )}
               </a>
             </Button>
           )}
           {project.demo && (
             <Button asChild>
               <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Live Demo
+                {project.categories?.includes("figma") ? (
+                  <>
+                    <Play className="w-4 h-4 mr-2" />
+                    Figma Prototype
+                  </>
+                ) : (
+                  <>
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Live Demo
+                  </>
+                )}
               </a>
             </Button>
           )}
