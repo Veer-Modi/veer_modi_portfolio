@@ -163,8 +163,9 @@
 import React from "react";
 import { Dialog, DialogContent, DialogTitle, DialogClose, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, ExternalLink, Github, CheckCircle2, MonitorPlay, Figma, Play } from "lucide-react";
+import { X, ExternalLink, Github, CheckCircle2, MonitorPlay, Figma, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Technology {
   name: string;
@@ -191,7 +192,45 @@ interface ProjectModalProps {
   project: Project;
 }
 
+const getYouTubeEmbedUrl = (url: string) => {
+  if (!url) return ""
+  let videoId = ""
+  if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1]?.split("?")[0]
+  } else if (url.includes("youtube.com/watch")) {
+    const urlParams = new URLSearchParams(url.split("?")[1])
+    videoId = urlParams.get("v") || ""
+  } else if (url.includes("youtube.com/embed/")) {
+    videoId = url.split("youtube.com/embed/")[1]?.split("?")[0]
+  }
+  return videoId ? `https://www.youtube.com/embed/${videoId}` : url
+}
+
 export default function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setCurrentSlide(0);
+    }
+  }, [isOpen, project]);
+
+  const slides: { type: "video" | "image"; content: string }[] = [];
+  if (project.video) {
+    slides.push({ type: "video", content: project.video });
+  }
+  slides.push({ type: "image", content: project.image });
+
+  const nextSlide = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] sm:w-full max-w-3xl max-h-[90vh] overflow-y-auto hide-scrollbar p-0 gap-0 [&>button.absolute]:hidden rounded-2xl sm:rounded-2xl">
@@ -206,22 +245,88 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
         </div>
 
         <div className="p-4 sm:p-6">
-          {/* Media (Video or Image) */}
-        <div className="mb-6">
-          {project.video ? (
-            <video
-              src={project.video}
-              controls
-              className="w-full rounded-lg"
-            />
-          ) : (
-            <img
-              src={project.image || "/placeholder.svg"}
-              alt={project.title}
-              className="w-full rounded-lg"
-            />
-          )}
-        </div>
+          {/* Media Carousel */}
+          <div className="mb-6 relative overflow-hidden rounded-xl bg-black/40 border border-white/10 aspect-video group">
+            {slides.length > 1 && (
+              <>
+                {/* Prev Button */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-background/60 backdrop-blur-md border border-white/10 hover:bg-background/90 text-foreground transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+
+                {/* Next Button */}
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-background/60 backdrop-blur-md border border-white/10 hover:bg-background/90 text-foreground transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </>
+            )}
+
+            {/* Carousel Slide Container */}
+            <div className="w-full h-full relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  {slides[currentSlide].type === "video" ? (
+                    slides[currentSlide].content.includes("youtube.com") || slides[currentSlide].content.includes("youtu.be") ? (
+                      <iframe
+                        src={`${getYouTubeEmbedUrl(slides[currentSlide].content)}?rel=0`}
+                        className="w-full h-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video
+                        src={slides[currentSlide].content}
+                        controls
+                        className="w-full h-full object-contain"
+                      />
+                    )
+                  ) : (
+                    <img
+                      src={slides[currentSlide].content}
+                      alt={`${project.title} slide`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Slide indicator dots */}
+            {slides.length > 1 && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentSlide(idx);
+                    }}
+                    className={`w-2.5 h-2.5 rounded-full transition-all ${
+                      currentSlide === idx
+                        ? "bg-primary scale-110"
+                        : "bg-white/40 hover:bg-white/60"
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
 
         {/* Description */}
         <p className="text-muted-foreground mb-6">

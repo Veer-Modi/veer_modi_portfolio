@@ -24,7 +24,7 @@ const projectsData = [
     longDescription:
       "A comprehensive e-commerce solution built with the MERN stack. This platform features user authentication, product management, shopping cart functionality, and secure payment processing with Stripe integration. The admin dashboard allows for easy product and order management.",
     image: "/vermio-play.png?height=600&width=800",
-    video: null,
+    video: "https://youtu.be/vyUP8NeJIl4",
     tags: ["React", "Node.js", "MongoDB", "Express"],
     github: "https://github.com/codinggita/vermio_play",
     demo: "https://vermio-play-1.onrender.com/",
@@ -180,7 +180,35 @@ const projectsData = [
   },
 ]
 
+const getYouTubeEmbedUrl = (url: string) => {
+  if (!url) return ""
+  let videoId = ""
+  if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1]?.split("?")[0]
+  } else if (url.includes("youtube.com/watch")) {
+    const urlParams = new URLSearchParams(url.split("?")[1])
+    videoId = urlParams.get("v") || ""
+  } else if (url.includes("youtube.com/embed/")) {
+    videoId = url.split("youtube.com/embed/")[1]?.split("?")[0]
+  }
+  return videoId ? `https://www.youtube.com/embed/${videoId}` : url
+}
+
+const getYouTubeVideoId = (url: string) => {
+  if (!url) return ""
+  if (url.includes("youtu.be/")) {
+    return url.split("youtu.be/")[1]?.split("?")[0]
+  } else if (url.includes("youtube.com/watch")) {
+    const urlParams = new URLSearchParams(url.split("?")[1])
+    return urlParams.get("v") || ""
+  } else if (url.includes("youtube.com/embed/")) {
+    return url.split("youtube.com/embed/")[1]?.split("?")[0]
+  }
+  return ""
+}
+
 export default function Projects() {
+  const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null)
   const [activeVideo, setActiveVideo] = useState<number | null>(null)
   const [activeCategory, setActiveCategory] = useState("all")
   const [filteredProjects, setFilteredProjects] = useState(projectsData)
@@ -201,6 +229,35 @@ export default function Projects() {
       setFilteredProjects(projectsData.filter((project) => project.categories.includes(activeCategory)))
     }
   }, [activeCategory])
+
+  const handleMouseEnter = (index: number) => {
+    setHoveredCardIndex(index)
+    const project = filteredProjects[index]
+    if (project.video) {
+      const isYouTube = project.video.includes("youtube.com") || project.video.includes("youtu.be")
+      if (!isYouTube) {
+        const videoEl = videoRefs.current[index]
+        if (videoEl) {
+          videoEl.play().catch((err) => console.log("Video play failed:", err))
+        }
+      }
+    }
+  }
+
+  const handleMouseLeave = (index: number) => {
+    setHoveredCardIndex(null)
+    const project = filteredProjects[index]
+    if (project.video) {
+      const isYouTube = project.video.includes("youtube.com") || project.video.includes("youtu.be")
+      if (!isYouTube) {
+        const videoEl = videoRefs.current[index]
+        if (videoEl) {
+          videoEl.pause()
+          videoEl.currentTime = 0
+        }
+      }
+    }
+  }
 
   const handleVideoToggle = (index: number) => {
     if (activeVideo === index) {
@@ -297,26 +354,39 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={() => handleMouseLeave(index)}
               >
                 <div className="relative overflow-hidden aspect-video">
                   {project.video ? (
                     <>
-                      <video
-                        ref={(el) => {
-                          videoRefs.current[index] = el
-                        }}
-                        src={project.video}
-                        poster={project.image}
-                        className="w-full h-full object-cover"
-                        loop
-                        muted
-                      />
-                      <button
-                        className="absolute bottom-3 right-3 p-2 bg-background/80 backdrop-blur-sm rounded-full"
-                        onClick={() => handleVideoToggle(index)}
-                      >
-                        {activeVideo === index ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
-                      </button>
+                      {project.video.includes("youtube.com") || project.video.includes("youtu.be") ? (
+                        hoveredCardIndex === index ? (
+                          <iframe
+                            src={`${getYouTubeEmbedUrl(project.video)}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${getYouTubeVideoId(project.video)}`}
+                            className="w-full h-full object-cover pointer-events-none scale-105"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            style={{ border: 0 }}
+                          />
+                        ) : (
+                          <img
+                            src={project.image || "/placeholder.svg"}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                          />
+                        )
+                      ) : (
+                        <video
+                          ref={(el) => {
+                            videoRefs.current[index] = el
+                          }}
+                          src={project.video}
+                          poster={project.image}
+                          className="w-full h-full object-cover"
+                          loop
+                          muted
+                        />
+                      )}
                     </>
                   ) : (
                     <img
